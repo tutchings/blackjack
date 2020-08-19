@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Blackjack</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <header>
+        <h1>BLACKJACK</h1>
+    </header>
+
+    <main>
+        <div class="dealers-cards">
+            <h3><b><u>Dealer</u></b></h3>
+
+            <img class="cards" src="img/cards/dealer-card-options/dealer-card-2.jpg" alt="2 of Clubs">
+            <img class="cards" src="img/cards/king-of-diamonds.jpg" alt="2 of Diamonds">
+
+            <div class="extra-cards-div">
+                <a class="small-card" href="#" title="Extra Card">
+                    <img class="extra-cards" src="img/cards/2-of-clubs-goodfellas.jpg" alt="2 of Clubs">
+                    <img class="large-card" src="img/cards/2-of-clubs-goodfellas.jpg" alt="2 of Clubs">
+                </a>
+                <a class="small-card" href="#" title="Extra Card">
+                    <img class="extra-cards" src="img/cards/2-of-clubs-goodfellas.jpg" alt="2 of Clubs">
+                    <img class="large-card" src="img/cards/2-of-clubs-goodfellas.jpg" alt="2 of Clubs">
+                </a>
+                <a class="small-card" href="#" title="Extra Card">
+                    <img class="extra-cards" src="img/cards/3-of-clubs.jpg" alt="2 of Clubs">
+                    <img class="large-card" src="img/cards/3-of-clubs.jpg" alt="2 of Clubs">
+                </a>
+                <a class="small-card" href="#" title="Extra Card">
+                    <img class="extra-cards" src="img/cards/4-of-clubs.jpg" alt="2 of Clubs">
+                    <img class="large-card" src="img/cards/4-of-clubs.jpg" alt="2 of Clubs">
+                </a>
+                <a class="small-card" href="#" title="Extra Card">
+                    <img class="extra-cards" src="img/cards/5-of-clubs.jpg" alt="2 of Clubs">
+                    <img class="large-card" src="img/cards/5-of-clubs.jpg" alt="2 of Clubs">
+                </a>
+                <a class="small-card" href="#" title="Extra Card">
+                    <img class="extra-cards" src="img/cards/6-of-clubs.jpg" alt="2 of Clubs">
+                    <img class="large-card" src="img/cards/6-of-clubs.jpg" alt="2 of Clubs">
+                </a>
+                <a class="small-card" href="#" title="Extra Card">
+                    <img class="extra-cards" src="img/cards/7-of-clubs.jpg" alt="2 of Clubs">
+                    <img class="large-card" src="img/cards/7-of-clubs.jpg" alt="2 of Clubs">
+                </a>
+                <a class="small-card" href="#" title="Extra Card">
+                    <img class="extra-cards" src="img/cards/8-of-clubs.jpg" alt="2 of Clubs">
+                    <img class="large-card" src="img/cards/8-of-clubs.jpg" alt="2 of Clubs">
+                </a>
+                <a class="small-card" href="#" title="Extra Card">
+                    <img class="extra-cards" src="img/cards/9-of-clubs.jpg" alt="2 of Clubs">
+                    <img class="large-card" src="img/cards/9-of-clubs.jpg" alt="2 of Clubs">
+                </a>
+            </div>
+
+
+        </div>
+
+
+        <div class="rules">
+            <h2><u>Rules</u></h2>
+            <ul>
+                <li>Blackjack pays 3 to 2</li>
+                <li>Insurance pays 2 to 1</li>
+                <li>Dealer must draw to 16</li>
+                <li>Dealer must stand on 17</li>
+            </ul>
+
+        </div>
+
+        <div class="options">
+
+            <div class="pot-amount">
+                <p><b><u>Current Pot:</u></b></p>
+            </div>
+
+            <button class="user-choice" type="button">Hit</button>
+            <button class="user-choice" type="button">Stick</button>
+            <button class="user-choice" type="button">Split</button>
+            <button class="user-choice" type="button">Double Down</button>
+            <button class="user-choice" type="button">Insurance</button>
+
+            <button class="button new-hand" type="button">New Hand</button>
+        </div>
+
+
+        <div class="pot">
+            <h3><u>Place Your Bet:</u></h3>
+
+            <div class="betting-incrementors">
+                <div class="betting-amount">
+                    <p>$1</p>
+                </div>
+                <button class="bet" type="button"><b>+</b></button>
+                <button class="bet" type="button"><b>-</b></button>
+            </div>
+
+            <div class="betting-incrementors">
+                <div class="betting-amount">
+                    <p>$5</p>
+                </div>
+                <button class="bet" type="button"><b>+</b></button>
+                <button class="bet" type="button"><b>-</b></button>
+            </div>
+
+            <div class="betting-incrementors">
+                <div class="betting-amount">
+                    <p>$10</p>
+                </div>
+                <button class="bet" type="button"><b>+</b></button>
+                <button class="bet" type="button"><b>-</b></button>
+            </div>
+
+            <div class="betting-incrementors">
+                <div class="betting-amount">
+                    <p>$25</p>
+                </div>
+                <button class="bet" type="button"><b>+</b></button>
+                <button class="bet" type="button"><b>-</b></button>
+            </div>
+
+            <div class="betting-incrementors">
+                <div class="betting-amount">
+                    <p>$50</p>
+                </div>
+                <button class="bet" type="button"><b>+</b></button>
+                <button class="bet" type="button"><b>-</b></button>
+            </div>
+
+            <div class="betting-incrementors">
+                <div class="betting-amount">
+                    <p>$100</p>
+                </div>
+                <button class="bet" type="button"><b>+</b></button>
+                <button class="bet" type="button"><b>-</b></button>
+            </div>
+
+            <div class="betting-incrementors">
+                <div class="betting-amount">
+                    <p>$500</p>
+                </div>
+                <button class="bet" type="button"><b>+</b></button>
+                <button class="bet" type="button"><b>-</b></button>
+            </div>
+
+            <div class="user-bet">
+                <p><b>$0</b></p>
+            </div>
+
+            <button class="button place-bet" type="button">Place Bet</button>
+            <button class="button reset" type=button>Reset</button>
+        </div>
+
+        <div class="users-cards">
+            <h3><b><u>User:</u> $1014</b></h3>
+            <img class="cards" src="img/cards/king-of-hearts.jpg" alt="2 of Hearts">
+            <img class="cards" src="img/cards/king-of-spades.jpg" alt="2 of Spades">
+
+            <div class="extra-cards-div">
+                <a class="small-card" href="#" title="Extra Card">
+                    <img class="extra-cards" src="img/cards/2-of-clubs-goodfellas.jpg" alt="2 of Clubs">
+                    <img class="large-card" src="img/cards/2-of-clubs-goodfellas.jpg" alt="2 of Clubs">
+                </a>
+                <a class="small-card" href="#" title="Extra Card">
+                    <img class="extra-cards" src="img/cards/2-of-clubs-goodfellas.jpg" alt="2 of Clubs">
+                    <img class="large-card" src="img/cards/2-of-clubs-goodfellas.jpg" alt="2 of Clubs">
+                </a>
+                <a class="small-card" href="#" title="Extra Card">
+                    <img class="extra-cards" src="img/cards/3-of-clubs.jpg" alt="2 of Clubs">
+                    <img class="large-card" src="img/cards/3-of-clubs.jpg" alt="2 of Clubs">
+                </a>
+                <a class="small-card" href="#" title="Extra Card">
+                    <img class="extra-cards" src="img/cards/4-of-clubs.jpg" alt="2 of Clubs">
+                    <img class="large-card" src="img/cards/4-of-clubs.jpg" alt="2 of Clubs">
+                </a>
+                <a class="small-card" href="#" title="Extra Card">
+                    <img class="extra-cards" src="img/cards/5-of-clubs.jpg" alt="2 of Clubs">
+                    <img class="large-card" src="img/cards/5-of-clubs.jpg" alt="2 of Clubs">
+                </a>
+                <a class="small-card" href="#" title="Extra Card">
+                    <img class="extra-cards" src="img/cards/6-of-clubs.jpg" alt="2 of Clubs">
+                    <img class="large-card" src="img/cards/6-of-clubs.jpg" alt="2 of Clubs">
+                </a>
+                <a class="small-card" href="#" title="Extra Card">
+                    <img class="extra-cards" src="img/cards/7-of-clubs.jpg" alt="2 of Clubs">
+                    <img class="large-card" src="img/cards/7-of-clubs.jpg" alt="2 of Clubs">
+                </a>
+                <a class="small-card" href="#" title="Extra Card">
+                    <img class="extra-cards" src="img/cards/8-of-clubs.jpg" alt="2 of Clubs">
+                    <img class="large-card" src="img/cards/8-of-clubs.jpg" alt="2 of Clubs">
+                </a>
+                <a class="small-card" href="#" title="Extra Card">
+                    <img class="extra-cards" src="img/cards/9-of-clubs.jpg" alt="2 of Clubs">
+                    <img class="large-card" src="img/cards/9-of-clubs.jpg" alt="2 of Clubs">
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy Tutchings 2020</p>
+    </footer>
+
+
+    <script src="script.js"></script>
+  </body>
+</html>
