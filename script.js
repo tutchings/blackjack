@@ -1,6 +1,6 @@
 // Variable Declarations
 let deck = [
-    "img/cards/2-of-clubs-goodfellas.jpg",
+    "img/cards/2-of-clubs.jpg",
     "img/cards/2-of-diamonds.jpg",
     "img/cards/2-of-hearts.jpg",
     "img/cards/2-of-spades.jpg",
@@ -219,6 +219,9 @@ function scoring(numberArray, scoreArray){
     return fullHandScoring;
 }
 
+
+
+
 //runs when new hand button is clicked
 function newHand(array, scoreArray){
 
@@ -228,6 +231,7 @@ function newHand(array, scoreArray){
     let newDealScore = scoring(newDeal, scoreArray);
     let userScore = 0;
     let dealerScore = 0;
+    let cardIncrementor = 0;
 
     //increment user score for first 2 cards dealt
     userScore = userScore + newDealScore[0];
@@ -341,7 +345,10 @@ function newHand(array, scoreArray){
         document.getElementById("dealerCard2").style.visibility = "visible";
     }, 1000)
 
+    //set card incrementor to four since first 4 cards have been dealt
+    cardIncrementor = 4
 
+    //win message if user initial deal is blackjack
     if (userScore == 21){
         setTimeout(function(){
             alert("BLACKJACK! You Won!");
@@ -357,9 +364,38 @@ function newHand(array, scoreArray){
     } //end if/else
 
 
+    //if hit button is pressed, deal new card, add to user score, increment hand cards
+    document.getElementById("hitBtn").onclick = function(){
+        document.getElementById("userCard" + (cardIncrementor - 1)).src = newDealImgs[cardIncrementor];
+        document.getElementById("userCard" + (cardIncrementor - 1) + "Large").src = newDealImgs[cardIncrementor];
+        document.getElementById("userCard" + (cardIncrementor - 1)).style.visibility = "visible";
+        userScore = userScore + newDealScore[cardIncrementor];
+
+        cardIncrementor = cardIncrementor + 1;
+
+        //if user score is over 21, alert lose message
+        if (userScore > 21){
+            setTimeout(function() {alert("You Lose"); }, 500);
+        }
+
+    };
+
+    //if stick button pressed, make dealer card visibile, determine who wins
+    document.getElementById("stickBtn").onclick = function(){
+        document.getElementById("dealerCard1").src = newDealImgs[0];
+
+        if (userScore >= dealerScore){
+            setTimeout(function() {alert("You Win"); }, 500);
+        } else {
+            setTimeout(function() {alert("You Lose"); }, 500);
+        }
+    };
+
+
+
+  
+
 }//end function newhand()
 
-
-
-
-
+//To-Do
+//Add alt to card imgs
