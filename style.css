@@ -64,6 +64,11 @@ a.small-card :hover + .large-card {
     border: 2px solid black;
 }
 
+a.small-card, a.small-card :visited {
+    text-decoration: none;
+    cursor: default;
+}
+
 
 
 /* h selectors */
