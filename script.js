@@ -54,6 +54,61 @@ let deck = [
     "img/cards/ace-of-spades.jpg"
 ];
 
+let deckAlt = [
+    "2 of Clubs",
+    "2 of Diamonds",
+    "2 of Hearts",
+    "2 of Spades",
+    "3 of Clubs",
+    "3 of Diamonds",
+    "3 of Hearts",
+    "3 of Spades",
+    "4 of Clubs",
+    "4 of Diamonds",
+    "4 of Hearts",
+    "4 of Spades",
+    "5 of Clubs",
+    "5 of Diamonds",
+    "5 of Hearts",
+    "5 of Spades",
+    "6 of Clubs",
+    "6 of Diamonds",
+    "6 of Hearts",
+    "6 of Spades",
+    "7 of Clubs",
+    "7 of Diamonds",
+    "7 of Hearts",
+    "7 of Spades",
+    "8 of Clubs",
+    "8 of Diamonds",
+    "8 of Hearts",
+    "8 of Spades",
+    "9 of Clubs",
+    "9 of Diamonds",
+    "9 of Hearts",
+    "9 of Spades",
+    "10 of Clubs",
+    "10 of Diamonds",
+    "10 of Hearts",
+    "10 of Spades",
+    "Jack of Clubs",
+    "Jack of Diamonds",
+    "Jack of Hearts",
+    "Jack of Spades",
+    "Queen of Clubs",
+    "Queen of Diamonds",
+    "Queen of Hearts",
+    "Queen of Spades",
+    "King of Clubs",
+    "King of Diamonds",
+    "King of Hearts",
+    "King of Spades",
+    "Ace of Clubs",
+    "Ace of Diamonds",
+    "Ace of Hearts",
+    "Ace of Spades"
+]
+
 let score = [
     2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6, 7, 7, 7, 7, 
     8, 8, 8, 8, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
@@ -208,6 +263,17 @@ function fullDealCardsImgs(numberArray, imgArray){
     return cardImgs;
 }
 
+//converts random number array to card alt array
+function fullDealCardsAlts(numberArray, altArray){
+    let cardAlts = [];
+
+    for (let i = 0; i < numberArray.length; i++){
+        cardAlts[i] = altArray[numberArray[i]];
+    }
+
+    return cardAlts;
+}
+
 //converts number array to scores corresponding to cards dealt
 function scoring(numberArray, scoreArray){
     let fullHandScoring = [];
@@ -223,11 +289,12 @@ function scoring(numberArray, scoreArray){
 
 
 //runs when new hand button is clicked
-function newHand(array, scoreArray){
+function newHand(array, scoreArray, altArray){
 
     //variable declarations/initial function calls
     let newDeal = fullDealCards(array);
     let newDealImgs = fullDealCardsImgs(newDeal, array);
+    let newDealAlts = fullDealCardsAlts(newDeal, altArray);
     let newDealScore = scoring(newDeal, scoreArray);
     let userScore = 0;
     let dealerScore = 0;
@@ -244,6 +311,7 @@ function newHand(array, scoreArray){
     //test purposes
     console.log(newDeal);
     console.log(newDealImgs);
+    console.log(newDealAlts);
     console.log(newDealScore);
     console.log(userScore);
     console.log(dealerScore);
@@ -326,22 +394,26 @@ function newHand(array, scoreArray){
     //deals first 4 cards with a 250ms second delay between cards
     setTimeout(function() {
         document.getElementById("userCard1").src = newDealImgs[0];
+        document.getElementById("userCard1").alt = newDealAlts[0];
         document.getElementById("userCard1").style.visibility = "visible";   
     }, 250)
 
     setTimeout(function() {
         document.getElementById("dealerCard1").src = "img/cards/dealer-card-options/dealer-card-2.jpg";
+        document.getElementById("dealerCard1").alt = "Harry Potter Card";
         document.getElementById("dealerCard1").style.visibility = "visible";
     }, 500)
 
 
     setTimeout(function() {
         document.getElementById("userCard2").src = newDealImgs[2];
+        document.getElementById("userCard2").alt = newDealAlts[2];
         document.getElementById("userCard2").style.visibility = "visible";
     }, 750)
 
     setTimeout(function() {
         document.getElementById("dealerCard2").src = newDealImgs[3];
+        document.getElementById("dealerCard2").alt = newDealAlts[3];
         document.getElementById("dealerCard2").style.visibility = "visible";
     }, 1000)
 
@@ -367,6 +439,7 @@ function newHand(array, scoreArray){
     //if hit button is pressed, deal new card, add to user score, increment hand cards
     document.getElementById("hitBtn").onclick = function(){
         document.getElementById("userCard" + (cardIncrementor - 1)).src = newDealImgs[cardIncrementor];
+        document.getElementById("userCard" + (cardIncrementor - 1)).alt = newDealAlts[cardIncrementor];
         document.getElementById("userCard" + (cardIncrementor - 1) + "Large").src = newDealImgs[cardIncrementor];
         document.getElementById("userCard" + (cardIncrementor - 1)).style.visibility = "visible";
         userScore = userScore + newDealScore[cardIncrementor];
@@ -383,6 +456,7 @@ function newHand(array, scoreArray){
     //if stick button pressed, make dealer card visibile, determine who wins
     document.getElementById("stickBtn").onclick = function(){
         document.getElementById("dealerCard1").src = newDealImgs[0];
+        document.getElementById("dealerCard1").alt = newDealAlts[0];
 
         if (userScore >= dealerScore){
             setTimeout(function() {alert("You Win"); }, 500);
