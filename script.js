@@ -115,10 +115,6 @@ let score = [
     11, 11, 11, 11
 ];
 
-let userCards = [];
-let dealerCards = [];
-let currentHand = [];
-
 
 //Functions
 function randomNumberGenerator(cardsArray) {
@@ -285,7 +281,112 @@ function scoring(numberArray, scoreArray){
     return fullHandScoring;
 }
 
+//hides user and dealer cards and resets img source
+function hideCards() {
+        // Hides User Cards
+        document.getElementById("userCard1").style.visibility = "hidden";
+        document.getElementById("userCard1").src = "#";
+    
+        document.getElementById("userCard2").style.visibility = "hidden";
+        document.getElementById("userCard2").src = "#";
+    
+        document.getElementById("userCard3").style.visibility = "hidden";
+        document.getElementById("userCard3").src = "#";
+    
+        document.getElementById("userCard4").style.visibility = "hidden";
+        document.getElementById("userCard4").src = "#";
+    
+        document.getElementById("userCard5").style.visibility = "hidden";
+        document.getElementById("userCard5").src = "#";
+    
+        document.getElementById("userCard6").style.visibility = "hidden";
+        document.getElementById("userCard6").src = "#";
+    
+        document.getElementById("userCard7").style.visibility = "hidden";
+        document.getElementById("userCard7").src = "#";
+    
+        document.getElementById("userCard8").style.visibility = "hidden";
+        document.getElementById("userCard8").src = "#";
+    
+        document.getElementById("userCard9").style.visibility = "hidden";
+        document.getElementById("userCard9").src = "#";
+    
+        document.getElementById("userCard10").style.visibility = "hidden";
+        document.getElementById("userCard10").src = "#";
+    
+        document.getElementById("userCard11").style.visibility = "hidden";
+        document.getElementById("userCard11").src = "#";
+    
+        //Hides Dealer Cards
+        document.getElementById("dealerCard1").style.visibility = "hidden";
+        document.getElementById("dealerCard1").src = "#";
+    
+        document.getElementById("dealerCard2").style.visibility = "hidden";
+        document.getElementById("dealerCard2").src = "#";
+    
+        document.getElementById("dealerCard3").style.visibility = "hidden";
+        document.getElementById("dealerCard3").src = "#";
+    
+        document.getElementById("dealerCard4").style.visibility = "hidden";
+        document.getElementById("dealerCard4").src = "#";
+    
+        document.getElementById("dealerCard5").style.visibility = "hidden";
+        document.getElementById("dealerCard5").src = "#";
+    
+        document.getElementById("dealerCard6").style.visibility = "hidden";
+        document.getElementById("dealerCard6").src = "#";
+        
+        document.getElementById("dealerCard7").style.visibility = "hidden";
+        document.getElementById("dealerCard7").src = "#";
+    
+        document.getElementById("dealerCard8").style.visibility = "hidden";
+        document.getElementById("dealerCard8").src = "#";
+    
+        document.getElementById("dealerCard9").style.visibility = "hidden";
+        document.getElementById("dealerCard9").src = "#";
+    
+        document.getElementById("dealerCard10").style.visibility = "hidden";
+        document.getElementById("dealerCard10").src = "#";
+    
+        document.getElementById("dealerCard11").style.visibility = "hidden";
+        document.getElementById("dealerCard11").src = "#";
+}
 
+//hides buttons
+function hideBtns(){
+    document.getElementById("hitBtn").style.visibility = "hidden";
+    document.getElementById("stickBtn").style.visibility = "hidden";
+}
+
+
+//creates total score based on input array
+function addScore(scoreArray){
+    let totalScore = 0;
+
+    for (let i = 0; i < scoreArray.length; i++){
+        totalScore = totalScore + scoreArray[i];
+    }
+
+    return totalScore;
+}//end function addScore
+
+
+//loops through array to look for aces, which can count as 1 or 11
+function aceChecker(scoreArray){
+    let newScoreArray = scoreArray;
+    let totalScore = addScore(scoreArray);
+
+    for (let i = 0; i < scoreArray.length; i++){
+        if (scoreArray[i] == 11){
+            newScoreArray[i] = 1;
+            totalScore = addScore(newScoreArray);
+            if (totalScore < 22){
+                return newScoreArray;
+            }//end if
+        }//end if
+    }//end for
+
+}//end function aceChecker
 
 
 //runs when new hand button is clicked
@@ -296,10 +397,30 @@ function newHand(array, scoreArray, altArray){
     let newDealImgs = fullDealCardsImgs(newDeal, array);
     let newDealAlts = fullDealCardsAlts(newDeal, altArray);
     let newDealScore = scoring(newDeal, scoreArray);
+    let userCards = [];
+    let dealerCards = [];
+    let userScoreArray = [];
+    let dealerScoreArray = [];
     let userScore = 0;
     let dealerScore = 0;
     let cardIncrementor = 0;
     let dealerIncrementor = 0;
+
+    //add first 2 user cards to user cards array
+    userCards[0] = newDeal[0];
+    userCards[1] = newDeal[2];
+
+    //adds first 2 scores to user score array
+    userScoreArray[0] = newDealScore[0];
+    userScoreArray[1] = newDealScore[2];
+
+    //add first 2 dealer cards to dealer cards array
+    dealerCards[0] = newDeal[1];
+    dealerCards[1] = newDeal[3];
+
+    //add first 2 scores to dealer score array
+    dealerScoreArray[0] = newDealScore[1];
+    dealerScoreArray[1] = newDealScore[3];
 
     //increment user score for first 2 cards dealt
     userScore = userScore + newDealScore[0];
@@ -309,87 +430,21 @@ function newHand(array, scoreArray, altArray){
     dealerScore = dealerScore + newDealScore[1];
     dealerScore = dealerScore + newDealScore[3];
 
-    
-    //trials
+    /*
+    //testing purposes
     console.log("Full Hand Random Number Array = " + newDeal);
     console.log("Full Hand Images = " + newDealImgs);
     console.log("Full Hand Alts = " + newDealAlts);
     console.log("Full Hand Scores = " + newDealScore);
     console.log("User Score = " + userScore);
     console.log("Dealer Score = " + dealerScore);
-    
+    */
 
-    // Hides User Cards
-    document.getElementById("userCard1").style.visibility = "hidden";
-    document.getElementById("userCard1").src = "#";
-
-    document.getElementById("userCard2").style.visibility = "hidden";
-    document.getElementById("userCard2").src = "#";
-
-    document.getElementById("userCard3").style.visibility = "hidden";
-    document.getElementById("userCard3").src = "#";
-
-    document.getElementById("userCard4").style.visibility = "hidden";
-    document.getElementById("userCard4").src = "#";
-
-    document.getElementById("userCard5").style.visibility = "hidden";
-    document.getElementById("userCard5").src = "#";
-
-    document.getElementById("userCard6").style.visibility = "hidden";
-    document.getElementById("userCard6").src = "#";
-
-    document.getElementById("userCard7").style.visibility = "hidden";
-    document.getElementById("userCard7").src = "#";
-
-    document.getElementById("userCard8").style.visibility = "hidden";
-    document.getElementById("userCard8").src = "#";
-
-    document.getElementById("userCard9").style.visibility = "hidden";
-    document.getElementById("userCard9").src = "#";
-
-    document.getElementById("userCard10").style.visibility = "hidden";
-    document.getElementById("userCard10").src = "#";
-
-    document.getElementById("userCard11").style.visibility = "hidden";
-    document.getElementById("userCard11").src = "#";
-
-    //Hides Dealer Cards
-    document.getElementById("dealerCard1").style.visibility = "hidden";
-    document.getElementById("dealerCard1").src = "#";
-
-    document.getElementById("dealerCard2").style.visibility = "hidden";
-    document.getElementById("dealerCard2").src = "#";
-
-    document.getElementById("dealerCard3").style.visibility = "hidden";
-    document.getElementById("dealerCard3").src = "#";
-
-    document.getElementById("dealerCard4").style.visibility = "hidden";
-    document.getElementById("dealerCard4").src = "#";
-
-    document.getElementById("dealerCard5").style.visibility = "hidden";
-    document.getElementById("dealerCard5").src = "#";
-
-    document.getElementById("dealerCard6").style.visibility = "hidden";
-    document.getElementById("dealerCard6").src = "#";
-    
-    document.getElementById("dealerCard7").style.visibility = "hidden";
-    document.getElementById("dealerCard7").src = "#";
-
-    document.getElementById("dealerCard8").style.visibility = "hidden";
-    document.getElementById("dealerCard8").src = "#";
-
-    document.getElementById("dealerCard9").style.visibility = "hidden";
-    document.getElementById("dealerCard9").src = "#";
-
-    document.getElementById("dealerCard10").style.visibility = "hidden";
-    document.getElementById("dealerCard10").src = "#";
-
-    document.getElementById("dealerCard11").style.visibility = "hidden";
-    document.getElementById("dealerCard11").src = "#";
+    //hides cards
+    hideCards();
 
     //hides buttons
-    document.getElementById("hitBtn").style.visibility = "hidden";
-    document.getElementById("stickBtn").style.visibility = "hidden";
+    hideBtns();
 
 
 
@@ -438,8 +493,6 @@ function newHand(array, scoreArray, altArray){
     } //end if/else
 
 
-
-
     //set card incrementor to four since first 4 cards have been dealt
     cardIncrementor = 4
 
@@ -450,6 +503,8 @@ function newHand(array, scoreArray, altArray){
         document.getElementById("userCard" + (cardIncrementor - 1)).alt = newDealAlts[cardIncrementor];
         document.getElementById("userCard" + (cardIncrementor - 1) + "Large").src = newDealImgs[cardIncrementor];
         document.getElementById("userCard" + (cardIncrementor - 1)).style.visibility = "visible";
+        userCards.push(newDeal[cardIncrementor]);
+        userScoreArray.push(newDealScore[cardIncrementor]);
         userScore = userScore + newDealScore[cardIncrementor];
 
         cardIncrementor = cardIncrementor + 1;
@@ -475,13 +530,12 @@ function newHand(array, scoreArray, altArray){
             document.getElementById("dealerCard" + dealerIncrementor + "Large").src = newDealImgs[cardIncrementor];
             document.getElementById("dealerCard" + dealerIncrementor).style.visibility = "visible";
             dealerScore = dealerScore + newDealScore[cardIncrementor];
+            dealerCards.push(newDeal[cardIncrementor]);
+            dealerScoreArray.push(newDealScore[cardIncrementor]);
             cardIncrementor = cardIncrementor + 1;
             dealerIncrementor = dealerIncrementor + 1;
-        }
+        }//end while
 
-        
-        console.log("User Score = " + userScore);
-        console.log("Dealer Score = " + dealerScore);
         
         if (userScore >= dealerScore){
         setTimeout(function() {alert("You Win"); }, 500);
