@@ -299,6 +299,7 @@ function newHand(array, scoreArray, altArray){
     let userScore = 0;
     let dealerScore = 0;
     let cardIncrementor = 0;
+    let dealerIncrementor = 0;
 
     //increment user score for first 2 cards dealt
     userScore = userScore + newDealScore[0];
@@ -308,13 +309,15 @@ function newHand(array, scoreArray, altArray){
     dealerScore = dealerScore + newDealScore[1];
     dealerScore = dealerScore + newDealScore[3];
 
-    //test purposes
-    console.log(newDeal);
-    console.log(newDealImgs);
-    console.log(newDealAlts);
-    console.log(newDealScore);
-    console.log(userScore);
-    console.log(dealerScore);
+    
+    //trials
+    console.log("Full Hand Random Number Array = " + newDeal);
+    console.log("Full Hand Images = " + newDealImgs);
+    console.log("Full Hand Alts = " + newDealAlts);
+    console.log("Full Hand Scores = " + newDealScore);
+    console.log("User Score = " + userScore);
+    console.log("Dealer Score = " + dealerScore);
+    
 
     // Hides User Cards
     document.getElementById("userCard1").style.visibility = "hidden";
@@ -417,8 +420,7 @@ function newHand(array, scoreArray, altArray){
         document.getElementById("dealerCard2").style.visibility = "visible";
     }, 1000)
 
-    //set card incrementor to four since first 4 cards have been dealt
-    cardIncrementor = 4
+
 
     //win message if user initial deal is blackjack
     if (userScore == 21){
@@ -436,6 +438,12 @@ function newHand(array, scoreArray, altArray){
     } //end if/else
 
 
+
+
+    //set card incrementor to four since first 4 cards have been dealt
+    cardIncrementor = 4
+
+
     //if hit button is pressed, deal new card, add to user score, increment hand cards
     document.getElementById("hitBtn").onclick = function(){
         document.getElementById("userCard" + (cardIncrementor - 1)).src = newDealImgs[cardIncrementor];
@@ -451,25 +459,42 @@ function newHand(array, scoreArray, altArray){
             setTimeout(function() {alert("You Lose"); }, 500);
         }
 
-    };
+    };//end hit btn function
 
+    
     //if stick button pressed, make dealer card visibile, determine who wins
     document.getElementById("stickBtn").onclick = function(){
-        document.getElementById("dealerCard1").src = newDealImgs[0];
-        document.getElementById("dealerCard1").alt = newDealAlts[0];
+        dealerIncrementor = 3
+        document.getElementById("dealerCard1").src = newDealImgs[1];
+        document.getElementById("dealerCard1").alt = newDealAlts[1];
 
-        if (userScore >= dealerScore){
-            setTimeout(function() {alert("You Win"); }, 500);
-        } else {
-            setTimeout(function() {alert("You Lose"); }, 500);
+        //while dealer score under 17, dealer must take new card
+        while (dealerScore < 17) {
+            document.getElementById("dealerCard" + dealerIncrementor).src = newDealImgs[cardIncrementor];
+            document.getElementById("dealerCard" + dealerIncrementor).alt = newDealAlts[cardIncrementor];
+            document.getElementById("dealerCard" + dealerIncrementor + "Large").src = newDealImgs[cardIncrementor];
+            document.getElementById("dealerCard" + dealerIncrementor).style.visibility = "visible";
+            dealerScore = dealerScore + newDealScore[cardIncrementor];
+            cardIncrementor = cardIncrementor + 1;
+            dealerIncrementor = dealerIncrementor + 1;
         }
-    };
 
+        
+        console.log("User Score = " + userScore);
+        console.log("Dealer Score = " + dealerScore);
+        
+        if (userScore >= dealerScore){
+        setTimeout(function() {alert("You Win"); }, 500);
+        } else if (dealerScore > userScore && dealerScore < 22){
+        setTimeout(function() {alert("You Lose"); }, 500);
+        } else {
+        setTimeout(function() {alert("You Win"); }, 500);
+        }//end if/else
+        
+    };// end stick btn function
 
-
-  
 
 }//end function newhand()
 
 //To-Do
-//Add alt to card imgs
+//ace problem
