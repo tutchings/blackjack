@@ -545,6 +545,13 @@ function newHand(array, scoreArray, altArray){
             }
         }
 
+        /*
+        //if user score is over 21, alert lose message
+        if (userScore > 21){
+            setTimeout(function() {alert("You Lose"); }, 500);
+        }
+        */
+
     };//end hit btn function
 
     
@@ -565,6 +572,24 @@ function newHand(array, scoreArray, altArray){
             dealerScoreArray.push(newDealScore[cardIncrementor]);
             cardIncrementor = cardIncrementor + 1;
             dealerIncrementor = dealerIncrementor + 1;
+
+            //Delete if Dealer Ace Always Counts as 11
+            console.log("Dealer Score Array Before Convert: " + dealerScoreArray)
+            console.log("Dealer Score Before Convert: " + dealerScore);
+
+            if (dealerScore > 21){
+                isEleven = elevenChecker(dealerScoreArray);
+                console.log("Eleven? " + isEleven)
+                
+                if (isEleven == true){
+                    dealerScoreArray = aceConverter(dealerScoreArray);
+                    dealerScore = addScore(dealerScoreArray);
+                    console.log("Dealer Score Array After Convert: " + dealerScoreArray);
+                    console.log("Dealer Score After Convert: " + dealerScore);
+                }
+            }
+            //end Delete
+
         }//end while
 
         
