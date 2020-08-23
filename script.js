@@ -281,6 +281,8 @@ function scoring(numberArray, scoreArray){
     return fullHandScoring;
 }
 
+
+
 //hides user and dealer cards and resets img source
 function hideCards() {
         // Hides User Cards
@@ -370,23 +372,29 @@ function addScore(scoreArray){
     return totalScore;
 }//end function addScore
 
+//checks for ace
+function elevenChecker(scoreArray){
+    
+    for (i = 0; i < scoreArray.length; i++){
+        if (scoreArray[i] == 11){
+            return true;
+        }
+    }
 
-//loops through array to look for aces, which can count as 1 or 11
-function aceChecker(scoreArray){
+    return false;
+}
+
+//converts ace from 11 to 1
+function aceConverter(scoreArray){
     let newScoreArray = scoreArray;
-    let totalScore = addScore(scoreArray);
 
     for (let i = 0; i < scoreArray.length; i++){
         if (scoreArray[i] == 11){
             newScoreArray[i] = 1;
-            totalScore = addScore(newScoreArray);
-            if (totalScore < 22){
-                return newScoreArray;
-            }//end if
-        }//end if
-    }//end for
-
-}//end function aceChecker
+            return newScoreArray;
+        }
+    }
+}
 
 
 //runs when new hand button is clicked
@@ -405,6 +413,9 @@ function newHand(array, scoreArray, altArray){
     let dealerScore = 0;
     let cardIncrementor = 0;
     let dealerIncrementor = 0;
+
+    //clear console
+    console.clear();
 
     //add first 2 user cards to user cards array
     userCards[0] = newDeal[0];
@@ -509,9 +520,29 @@ function newHand(array, scoreArray, altArray){
 
         cardIncrementor = cardIncrementor + 1;
 
-        //if user score is over 21, alert lose message
+        //if user score over 21
+            //check for ace
+                //if there is no ace, user loses
+                //if there is an ace, convert to 1
+
+        let isEleven;
+
+        console.log("User Score Array Before Convert: " + userScoreArray);
+        console.log("User Score Before Convert: " + userScore);
+
+
         if (userScore > 21){
-            setTimeout(function() {alert("You Lose"); }, 500);
+            isEleven = elevenChecker(userScoreArray);
+            console.log("Eleven? " + isEleven)
+            
+            if (isEleven == false){
+                setTimeout(function() {alert("You Lose"); }, 500);
+            } else {
+                userScoreArray = aceConverter(userScoreArray);
+                userScore = addScore(userScoreArray);
+                console.log("User Score Array After Convert: " + userScoreArray);
+                console.log("User Score After Convert: " + userScore);
+            }
         }
 
     };//end hit btn function
