@@ -468,7 +468,7 @@ function newHand(array, scoreArray, altArray){
     }, 250)
 
     setTimeout(function() {
-        document.getElementById("dealerCard1").src = "img/cards/dealer-card-options/dealer-card-2.jpg";
+        document.getElementById("dealerCard1").src = "img/cards/dealer-card-options/Laura_Disney_Castle_Picture.jpg";
         document.getElementById("dealerCard1").alt = "Harry Potter Card";
         document.getElementById("dealerCard1").style.visibility = "visible";
     }, 500)
