@@ -2,7 +2,15 @@
 
 ## Deployed Project
 
-* [`BlackJack`](https://tutchings.github.io/blackjack/)
+![Screenshot of Final Project](https://github.com/tutchings/blackjack/blob/master/blackjack.PNG)
+
+* [Deployed Website Link](https://tutchings.github.io/blackjack/)
+
+## Languages/Frameworks
+
+* HTML
+* CSS
+* JavaScript
 
 ## Description
 
